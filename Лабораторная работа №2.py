@@ -1,6 +1,9 @@
 import sys
 
-def input_numbers():
+def input_numbers(): 
+    
+    '''Функция ввода переменых a и b'''
+   
     try:
         a = int(input('Введите первое число\n'))
         b = int(input('Введите второе число\n'))
@@ -8,6 +11,11 @@ def input_numbers():
     except ValueError:
         print('Нужно ввести число или цифру')
         sys.exit(1)
+        
+        '''Если пользователь ввёл корректные числа, возвращаем a и b
+           Если он ввёл не числа, сообщаем ему об этом и дальше не выполняем код''' 
+
+
 
 def calc_type_input():
     calc_type = input('Как считаем НОД, вычитанием (-) или делением (/)? \n')
@@ -43,6 +51,6 @@ def calc_Euclid(a, b, calc_type):
 
 
 
-a, b = input_numbers()
+a, b = input_numbers() #вызываем функцию ввода чисел и сохраняем их в переменные a и b
 calc_type = calc_type_input()
 print(calc_Euclid(a,b, calc_type))
