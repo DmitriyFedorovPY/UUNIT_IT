@@ -1,17 +1,26 @@
-a = int(input('Введите первое число\n'))
-b = int(input('Введите второе число\n'))
-calc_type = input('Как считаем НОД, вычитанием (-) или делением (/)? \n')
+import sys
 
+def input_numbers():
+    try:
+        a = int(input('Введите первое число\n'))
+        b = int(input('Введите второе число\n'))
+        return a, b
+    except ValueError:
+        print('Нужно ввести число или цифру')
+        sys.exit(1)
 
+def calc_type_input():
+    calc_type = input('Как считаем НОД, вычитанием (-) или делением (/)? \n')
+    return calc_type
 
-def calc_Euclid(a,b, calc_type):
+def calc_Euclid(a, b, calc_type):
 
     """Функция расчёта НОД по теореме Евклида"""
 
     if a <= 0 or b <= 0:
-        print('Числа должны быть больше нуля')
+        return ('Числа должны быть больше нуля')
     elif calc_type != '-' and calc_type != '/':
-        print('Вы выбрали неправильное действие')
+        return ('Вы выбрали неправильное действие')
     else:
         if calc_type == '-': #Расчёт НОД вычитанием
             while a != 0 and b != 0:  # пока оба числа не 0 цикл не закончится
@@ -33,4 +42,7 @@ def calc_Euclid(a,b, calc_type):
             return a + b
 
 
+
+a, b = input_numbers()
+calc_type = calc_type_input()
 print(calc_Euclid(a,b, calc_type))
